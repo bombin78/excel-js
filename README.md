@@ -1,2 +1,2 @@
 # excel-js
-"excel" with pure javascript
+"Excel" with pure javascript
