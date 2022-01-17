@@ -39,7 +39,7 @@ module.exports = (env, argv) => {
 
     return {
         // Возможно target уже не требуется
-        // target: 'web'
+        // target: 'web',
         context: path.resolve(__dirname, 'src'),
         entry: {
             main: [
