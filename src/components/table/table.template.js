@@ -3,18 +3,33 @@ const CODES = {
     Z: 90,
 };
 
-function toColumn(col) {
-    return `<div class="column">${col}</div>`;
+function toColumn(col, idx) {
+    return `
+        <div class="column" data-type="resizable" data-col=${idx}>
+            ${col}
+            <div class="col-resize" data-resize="col"></div>
+        </div>
+    `;
 }
 
-function toCell(cell) {
-    return `<div class="cell" contenteditable="true">${cell}</div>`;
+function toCell(_, col) {
+    return `
+        <div class="cell" data-col=${col} contenteditable="true">
+        </div>
+    `;
 }
 
 function createRow(rowNum, content) {
+    const resizer = rowNum
+        ? '<div class="row-resize" data-resize="row"></div>'
+        : '';
+
     return `
-        <div class="row">
-            <div class="row-info">${rowNum ? rowNum : ''}</div>
+        <div class="row" data-type="resizable">
+            <div class="row-info">
+                ${rowNum ? rowNum : ''}
+                ${resizer}
+            </div>
             <div class="row-data">${content}</div>
         </div>
     `;
